@@ -48,7 +48,9 @@ figure;  imshow ( I_dila_3 ) ;impixelinfo;
 RGB = label2rgb(L);
 figure;  imshow (RGB ) ;impixelinfo;
 
-
+figure;
+imshow(I);
+hold on
 %isoler et d’afficher séparément chacun des chiffres présents dans le code postal de l'image
 for k = 1:N
     objet= (L==k); 
@@ -58,6 +60,16 @@ for k = 1:N
     Xmax= round(max(x));
     Ymax= round(max(y));
     C=imcrop(objet,[Ymin Xmin Ymax-Ymin Xmax-Xmin]);
-    figure;imshow(C);
+    % Dessin du rectangle autour du chiffre
+    rectangle('Position', [Ymin Xmin Ymax-Ymin Xmax-Xmin], 'EdgeColor', 'r', 'LineWidth', 2);
+    %figure;
+    %imshow(C);
+    
 end
+hold off
 % Extraction des caractéristiques des chiffres
+
+
+
+
+
